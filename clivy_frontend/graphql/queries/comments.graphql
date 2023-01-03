@@ -1,0 +1,13 @@
+query Comments($postId: Int!, $limit: Int!, $idsList: [Int!]!) {
+    comments(
+        postId: $postId,
+        limit: $limit,
+        idsList: $idsList
+    ) {
+        comments {
+            ...CommentFragment
+        }
+        hasMore
+        postId
+    }
+}

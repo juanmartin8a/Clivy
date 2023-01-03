@@ -1,0 +1,16 @@
+query Replies($commentId: Int!, $postId: Int!, $limit: Int!, $cursor: String, $idsList: [Int!]!) {
+    commentReplies(
+        commentId: $commentId,
+        postId: $postId,
+        limit: $limit,
+        cursor: $cursor,
+        idsList: $idsList
+    ) {
+        replies {
+            ...ReplyFragment
+        }
+        hasMore
+        commentId
+        postId
+    }
+}

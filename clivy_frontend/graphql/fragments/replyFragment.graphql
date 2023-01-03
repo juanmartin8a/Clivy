@@ -1,0 +1,24 @@
+fragment ReplyFragment on Reply {
+  __typename
+  id
+  reply
+  user_id
+  comment_id
+  post_id
+  createdAt
+  likeCount
+  likeState
+  user {
+    id
+    username
+    smallFile {
+      file
+      error
+    }
+  },
+  userTags {
+    reply_id
+    user_id
+    user_string
+  }
+}

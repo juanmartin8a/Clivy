@@ -1,0 +1,14 @@
+mutation Register($input: RegisterInput!, $deviceInput: DeviceInput!) {
+	register(input: $input, deviceInput: $deviceInput) {
+        errors {
+            field
+            message
+        }
+        user {
+            ...UserFragment
+        }
+        tokens {
+            ...TokensFragment
+        }
+	}
+}

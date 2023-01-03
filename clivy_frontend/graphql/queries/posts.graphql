@@ -1,0 +1,11 @@
+query Posts($limit: Int!, $idsList: [Int!]!) {
+  posts(
+    limit: $limit
+    idsList: $idsList
+  ) {
+    posts {
+      ...PostFragment
+		}
+    hasMore
+  }
+}

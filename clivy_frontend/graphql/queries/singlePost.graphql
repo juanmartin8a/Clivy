@@ -1,0 +1,5 @@
+query SinglePost($id: Int!) {
+  singlePost(id: $id) {
+    ...PostFragment
+  }
+}

@@ -1,0 +1,20 @@
+query User($userId: Int!) {
+  user(
+    userId: $userId
+  ) {
+    __typename
+    id
+    username
+    name
+    email
+    bio
+    file {
+      file
+      error
+    }
+    followState
+    followingCount
+    followersCount
+    postCount
+	}
+}

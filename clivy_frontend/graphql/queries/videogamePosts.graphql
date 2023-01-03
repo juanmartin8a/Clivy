@@ -1,0 +1,12 @@
+query VideogamePosts($limit: Int!, $videogameId: Int!, $idsList: [Int!]!) {
+  videogamePosts(
+    limit: $limit,
+    videogameId: $videogameId,
+    idsList: $idsList
+  ) {
+    posts {
+      ...PostFragment
+		}
+    hasMore
+  }
+}

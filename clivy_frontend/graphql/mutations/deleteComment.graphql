@@ -1,0 +1,6 @@
+mutation DeleteComment($commentId: Int!, $isReply: Boolean!) {
+  deleteComment(
+    commentId: $commentId,
+    isReply: $isReply
+  )
+}

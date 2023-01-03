@@ -1,0 +1,16 @@
+query SearchedUsers {
+  searchedUsers {
+    # userId,
+    searchedUserId,
+    searchedUser {
+      id
+      username
+      name,
+      file {
+        file
+        error
+      }
+    }
+    updatedAt
+	}
+}

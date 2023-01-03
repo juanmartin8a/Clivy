@@ -1,0 +1,28 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - graphql/**
+      - schema.graphql
+    builders:
+      artemis:
+        options:
+          generate_helpers: true
+          schema_mapping:
+            - output: lib/src/api/graphql/graphql_api.dart
+              schema: schema.graphql
+              queries_glob: graphql/{mutations,queries,subscriptions}/**.graphql
+          fragments_glob: graphql/fragments/**.graphql
+          scalar_mapping:
+            - graphql_type: Upload
+              custom_parser_import: 'package:untitled_client/src/api/upload_serializer.dart'
+              dart_type: 
+                name: CustomMultipartFile
+                imports: 
+                  - 'package:untitled_client/src/models/customMultipartFile.dart'
+            # - graphql_type: Upload2
+            #   custom_parser_import: 'package:untitled_client/src/api/upload_serializer2.dart'
+            #   dart_type: 
+            #     name: CustomMultipartFile
+            #     imports: 
+            #       - 'package:untitled_client/src/models/customMultipartFile.dart'

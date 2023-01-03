@@ -1,0 +1,22 @@
+query UserFollowing($followUserId: Int!, $limit: Int!, $idsList: [Int!]!, $cursor: String) {
+  userFollowing(
+    followUserId: $followUserId,
+    limit: $limit,
+    idsList: $idsList,
+    cursor: $cursor
+  ) {
+    users {
+      id
+      username
+      name
+      smallFile {
+        file
+        error
+      }
+      followState
+      createdAt
+    }
+    hasMore
+    userId
+  }
+}

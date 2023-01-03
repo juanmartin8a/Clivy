@@ -1,0 +1,14 @@
+mutation SignIn($input: SignInInput!, $deviceInput: DeviceInput!) {
+	signIn(input: $input, deviceInput: $deviceInput) {
+        errors {
+            field
+            message
+        }
+        user {
+            ...UserFragment
+        }
+        tokens {
+            ...TokensFragment
+        }
+	}
+}

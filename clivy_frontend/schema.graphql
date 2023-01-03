@@ -1,0 +1,532 @@
+type Query {
+  me: User!
+  user(userId: Int!): User
+  getAllUsers: [User!]
+  searchUsers(search: String!): [User!]!
+  verifyResetCode(code: String!, email: String!): Boolean!
+  userFollowers(
+    cursor: String
+    limit: Int!
+    idsList: [Int!]!
+    followUserId: Int!
+  ): PaginatedFollow!
+  userFollowing(
+    cursor: String
+    limit: Int!
+    idsList: [Int!]!
+    followUserId: Int!
+  ): PaginatedFollow!
+  posts(idsList: [Int!]!, limit: Int!): PaginatedPosts!
+  followingPosts(idsList: [Int!]!, limit: Int!): PaginatedPosts!
+  videogamePosts(
+    idsList: [Int!]!
+    videogameId: Int!
+    limit: Int!
+  ): PaginatedPosts!
+  userPosts(cursor: String, limit: Int!, userId: Int!): PaginatedPosts!
+  getAllPosts: [Post!]!
+  singlePost(id: Int!): Post
+  comments(idsList: [Int!]!, postId: Int!, limit: Int!): CommentResponse!
+  searchedUsers: [UserSearch!]!
+  commentReplies(
+    idsList: [Int!]!
+    postId: Int!
+    commentId: Int!
+    cursor: String
+    limit: Int!
+  ): ReplyResponse!
+  allVideogames: [Videogame!]!
+  allTapsVideogames: [Videogame!]!
+  allVideogameGenres: [VideogameGenre!]!
+  notifications(limit: Int!, idsList: [String!]!): PaginatedNotifications!
+}
+
+type User {
+  id: Float!
+  name: String!
+  username: String!
+  email: String!
+  bio: String!
+  file_key: String!
+  file: FileResponse!
+  small_file_key: String!
+  smallFile: FileResponse!
+  postCount: Int!
+  replies: [Reply!]!
+  searchedUsers: [UserSearch!]!
+  searchedBy: [UserSearch!]!
+  followers: [Follow!]!
+  followersCount: Int!
+  following: [Follow!]!
+  followingCount: Int!
+  followState: Boolean
+  commentUserTags: [CommentUserTag!]!
+  replyUserTags: [ReplyUserTag!]!
+  captionUserTags: [CaptionUserTag!]!
+  postViews: [PostView!]!
+  videogameUserPreference: [VideogameUserPreferences!]!
+  videogameGenreUserPreference: [VideogameGenreUserPreferences!]!
+  deviceToken: [DeviceToken!]!
+  notification: [Notification!]!
+  likeNotification: [LikeNotification!]!
+  commentLikeNotification: [CommentLikeNotification!]!
+  replyLikeNotification: [ReplyLikeNotification!]!
+  followerNotification: [FollowNotification!]!
+  followNotification: [FollowNotification!]!
+  commentNotification: [CommentNotification!]!
+  replyNotification: [ReplyNotification!]!
+  commentTagNotification: [CommentTagNotification!]!
+  replyTagNotification: [ReplyTagNotification!]!
+  captionTagNotification: [CaptionTagNotification!]!
+  birthday: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type FileResponse {
+  file: String
+  error: String
+}
+
+type Reply {
+  id: Float!
+  user_id: Float!
+  comment_id: Float!
+  post_id: Float!
+  reply: String!
+  user: User!
+  comment: Comment!
+  likes: [ReplyLike!]!
+  likeState: Boolean
+  likeCount: Int!
+  userTags: [ReplyUserTag!]!
+  likeNotifications: [ReplyLikeNotification!]!
+  replyNotification: [ReplyNotification!]!
+  replyTagNotification: [ReplyTagNotification!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Comment {
+  id: Float!
+  user_id: Float!
+  post_id: Float!
+  comment: String!
+  user: User!
+  post: Post!
+  replyCount: Int!
+  replies: [Reply!]!
+  likes: [CommentLike!]!
+  likeState: Boolean
+  likeCount: Int!
+  userTags: [CommentUserTag!]!
+  likeNotifications: [CommentLikeNotification!]!
+  commentNotification: [CommentNotification!]!
+  commentTagNotification: [CommentTagNotification!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Post {
+  id: Float!
+  caption: String!
+  file_key: String!
+  file: FileResponse!
+  fileWidth: Int!
+  fileHeight: Int!
+  fileGifKey: String!
+  fileGif: FileResponse!
+  fileImgKey: String!
+  fileImg: FileResponse!
+  user_id: Float!
+  likes: [Like!]!
+  likeState: Boolean
+  likeCount: Int!
+  comments: [Comment!]!
+  commentCount: Int!
+  userTags: [CaptionUserTag!]!
+  videogame_id: Int!
+  videogame: [Videogame!]!
+  videogameGenre: [VideogameGenrePost!]!
+  viewsCount: Int!
+  postViews: [PostView!]!
+  likeNotifications: [LikeNotification!]!
+  captionTagNotification: [CaptionTagNotification!]!
+  createdAt: String!
+  updatedAt: String!
+  user: User!
+}
+
+type Like {
+  user_id: Float!
+  post_id: Float!
+  user: User!
+  post: Post!
+  createdAt: String!
+}
+
+type CaptionUserTag {
+  post_id: Int!
+  user_id: Int!
+  user_string: String!
+  user: User!
+  post: Post!
+}
+
+type Videogame {
+  id: Int!
+  name: String!
+  file_key: String!
+  file: FileResponse!
+  tapCount: Int!
+  postCount: Int!
+  videogameGenre: [VideogameGenreVideogame!]!
+  post: [Post!]!
+  videogameUserPreference: [VideogameUserPreferences!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type VideogameGenreVideogame {
+  videogame_genre_id: Int!
+  videogame_id: Int!
+  videogameGenre: VideogameGenre!
+  videogame: Videogame!
+  createdAt: String!
+}
+
+type VideogameGenre {
+  id: Int!
+  videogame_genre: String!
+  videogameGenreVideogames: [VideogameGenreVideogame!]!
+  videogameGenrePost: [VideogameGenrePost!]!
+  videogameGenreUserPreference: [VideogameGenreUserPreferences!]!
+  createdAt: String!
+}
+
+type VideogameGenrePost {
+  videogameGenre: VideogameGenre!
+  post: Post!
+  createdAt: String!
+}
+
+type VideogameGenreUserPreferences {
+  createdAt: String!
+}
+
+type VideogameUserPreferences {
+  createdAt: String!
+}
+
+type PostView {
+  post_id: Float!
+  user_id: Float!
+  createdAt: String!
+}
+
+type LikeNotification {
+  post_id: Int!
+  user_id: Int!
+  type: Int!
+  post: Post!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type CaptionTagNotification {
+  post_id: Int!
+  user_id: Int!
+  type: Int!
+  post: Post!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type CommentLike {
+  user_id: Float!
+  comment_id: Float!
+  user: User!
+  comment: Comment!
+  createdAt: String!
+}
+
+type CommentUserTag {
+  comment_id: Int!
+  user_id: Int!
+  user_string: String!
+  user: User!
+  comment: Comment!
+  createdAt: String!
+}
+
+type CommentLikeNotification {
+  comment_id: Int!
+  user_id: Int!
+  type: Int!
+  comment: Comment!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type CommentNotification {
+  comment_id: Int!
+  user_id: Int!
+  type: Int!
+  comment: Comment!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type CommentTagNotification {
+  comment_id: Int!
+  user_id: Int!
+  type: Int!
+  comment: Comment!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type ReplyLike {
+  user_id: Float!
+  reply_id: Float!
+  user: User!
+  reply: Reply!
+  createdAt: String!
+}
+
+type ReplyUserTag {
+  reply_id: Int!
+  user_id: Int!
+  user_string: String!
+  user: User!
+  reply: Reply!
+  createdAt: String!
+}
+
+type ReplyLikeNotification {
+  reply_id: Int!
+  user_id: Int!
+  type: Int!
+  reply: Reply!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type ReplyNotification {
+  reply_id: Int!
+  user_id: Int!
+  type: Int!
+  reply: Reply!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type ReplyTagNotification {
+  reply_id: Int!
+  user_id: Int!
+  type: Int!
+  reply: Reply!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type UserSearch {
+  userId: Int!
+  searchedUserId: Int!
+  user: User!
+  searchedUser: User!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Follow {
+  followerId: Float!
+  followingId: Float!
+  createdAt: String!
+}
+
+type DeviceToken {
+  createdAt: String!
+}
+
+type Notification {
+  parent_id: Int!
+  user_id: Int!
+  type: String!
+  concatenated_id: String!
+  likeNotification: LikeNotification
+  likeCommentNotification: CommentLikeNotification
+  likeReplyNotification: ReplyLikeNotification
+  followNotification: FollowNotification
+  commentNotification: CommentNotification
+  replyNotification: ReplyNotification
+  commentTagNotification: CommentTagNotification
+  replyTagNotification: ReplyTagNotification
+  captionTagNotification: CaptionTagNotification
+  updatedAt: String!
+  createdAt: String!
+}
+
+type FollowNotification {
+  follower_id: Int!
+  user_id: Int!
+  type: Int!
+  follower: User!
+  updatedAt: String!
+  createdAt: String!
+}
+
+type PaginatedFollow {
+  users: [User!]!
+  hasMore: Boolean!
+  userId: Int!
+}
+
+type PaginatedPosts {
+  posts: [Post!]!
+  hasMore: Boolean!
+}
+
+type CommentResponse {
+  comments: [Comment!]!
+  hasMore: Boolean!
+  postId: Int!
+}
+
+type ReplyResponse {
+  replies: [Reply!]!
+  hasMore: Boolean!
+  commentId: Int!
+  postId: Int!
+}
+
+type PaginatedNotifications {
+  notifications: [Notification!]!
+  hasMore: Boolean!
+}
+
+type Mutation {
+  register(
+    deviceInput: DeviceInput!
+    input: RegisterInput!
+  ): UserMutationResponse!
+  signIn(deviceInput: DeviceInput!, input: SignInInput!): UserMutationResponse!
+  signOut(token: String!): Boolean!
+  refreshToken(token: String!): TokenResponse!
+  editUser(
+    smallFile: Upload
+    file: Upload
+    input: UserUpdateInput!
+  ): UserMutationResponse!
+  userTapped(id: Int!): User
+  followUnfollowUser(clientId: String!, followUserId: Int!): LikeResponse!
+  sendResetPasswordEmail(email: String!): Boolean!
+  changePasswordAndSignIn(
+    newPassword: String!
+    code: String!
+    email: String!
+    deviceInput: DeviceInput!
+  ): UserMutationResponse!
+  addUserInterests(videogameGenresIds: [Int!]!): Boolean!
+  addNewDeviceToken(deviceInput: DeviceInput!): Boolean!
+  deleteUser: Boolean!
+  createPost(
+    videogameGenreIds: [Int!]!
+    videogameId: Int
+    userTagsInput: [UserTagInput!]!
+    fileImg: Upload!
+    fileGif: Upload!
+    file: Upload!
+    fileDims: FileDimsInput!
+    caption: String!
+  ): CreatePostResponse!
+  likeUnlikePost(clientId: String!, postId: Int!): LikeResponse!
+  viewClip(postId: Int!): Boolean!
+  deletePost(postId: Int!): Boolean!
+  commentPost(
+    userTagsInput: [UserTagInput!]!
+    comment: String!
+    postId: Int!
+  ): CreateCommentResponse!
+  likeUnlikeComment(clientId: String!, commentId: Int!): LikeResponse!
+  deleteComment(isReply: Boolean!, commentId: Int!): Boolean!
+  deleteUserSearch(searchedUserId: Int!): Boolean!
+  replyComment(
+    userTagsInput: [UserTagInput!]!
+    reply: String!
+    postId: Int!
+    commentId: Int!
+  ): CreateReplyResponse!
+  likeUnlikeReply(clientId: String!, replyId: Int!): LikeResponse!
+}
+
+type UserMutationResponse {
+  user: User
+  tokens: TokenResponse
+  errors: [ErrorResponse!]
+}
+
+type TokenResponse {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type ErrorResponse {
+  field: String!
+  message: String!
+}
+
+input DeviceInput {
+  deviceToken: String
+  platformIsIOS: Boolean
+}
+
+input RegisterInput {
+  name: String!
+  username: String!
+  email: String!
+  password: String!
+  birthday: String!
+}
+
+input SignInInput {
+  usernameOrEmail: String!
+  password: String!
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload
+
+input UserUpdateInput {
+  name: String
+  username: String
+  bio: String
+}
+
+type CreatePostResponse {
+  post: Post
+  error: ErrorResponse
+}
+
+input UserTagInput {
+  userString: String!
+  userId: Int!
+}
+
+input FileDimsInput {
+  fileWidth: Int!
+  fileHeight: Int!
+}
+
+type CreateCommentResponse {
+  comment: Comment
+  postId: Int
+  error: Boolean
+}
+
+type CreateReplyResponse {
+  reply: Reply
+  commentId: Int
+  postId: Int
+  error: Boolean
+}

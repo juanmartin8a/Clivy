@@ -1,0 +1,3 @@
+mutation DeleteUserSearch($searchedUserId: Int!) {
+  deleteUserSearch(searchedUserId: $searchedUserId)
+}

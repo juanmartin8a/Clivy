@@ -1,0 +1,4 @@
+fragment FileFragment on FileResponse {
+    file
+    error
+}

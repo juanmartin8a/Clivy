@@ -1,0 +1,3 @@
+mutation AddUserInterests($videogameGenresIds: [Int!]!) {
+  addUserInterests(videogameGenresIds: $videogameGenresIds)
+}

@@ -1,0 +1,10 @@
+fragment VideogameFragment on Videogame {
+  id
+  name
+  postCount
+  tapCount
+  file {
+    file
+    error
+  }
+}

@@ -1,0 +1,24 @@
+fragment CommentFragment on Comment {
+    __typename
+    id
+    comment
+    user_id
+    post_id
+    createdAt
+    replyCount
+    likeCount
+    likeState
+    user {
+        id
+        username
+        smallFile {
+            file
+            error
+        }
+    },
+    userTags {
+        comment_id
+        user_id
+        user_string
+    }
+}

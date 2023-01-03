@@ -1,0 +1,26 @@
+mutation EditProfile($input: UserUpdateInput!, $file: Upload, $smallFile: Upload) {
+  editUser(
+    input: $input,
+    file: $file,
+    smallFile: $smallFile
+  ) {
+    errors {
+      field
+      message
+    }
+    user {
+      __typename
+      id
+      name
+      username
+      email
+      bio
+      file {
+        file,
+        error
+      }
+      followingCount
+      followersCount
+    }
+	}
+}

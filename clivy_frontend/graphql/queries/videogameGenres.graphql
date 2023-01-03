@@ -1,0 +1,6 @@
+query AllVideogameGenres {
+  allVideogameGenres {
+    id
+    videogame_genre
+  }
+}

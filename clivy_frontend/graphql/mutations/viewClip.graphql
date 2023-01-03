@@ -1,0 +1,3 @@
+mutation ViewClip($postId: Int!) {
+  viewClip(postId: $postId)
+}

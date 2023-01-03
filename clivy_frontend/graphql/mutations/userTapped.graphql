@@ -1,0 +1,11 @@
+mutation userTapped($id: Int!) {
+  userTapped(id: $id) {
+    id
+    username
+    name,
+    file {
+      file
+      error
+    }
+	}
+}

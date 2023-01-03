@@ -1,0 +1,16 @@
+query UserPosts($userId: Int!, $limit: Int!, $cursor: String) {
+  userPosts(
+    userId: $userId, 
+    limit: $limit,
+    cursor: $cursor
+  ) {
+    posts {
+      ...PostFragment
+      fileGif {
+        file
+        error
+      }
+    }
+    hasMore
+  }
+}

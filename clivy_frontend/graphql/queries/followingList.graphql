@@ -1,0 +1,20 @@
+# query FollowingList($selectedUserId: Int!, $idsList: [Int!]!, $limit: Int!) {
+#   followingList(
+#     selectedUserId: $selectedUserId,
+#     idsList: $idsList,
+#     limit: $limit
+#   ) {
+#     users {
+#       id
+#       username
+#       name
+#       followState
+#       smallFile {
+#         file
+#         error
+#       }
+#     }
+#     hasMore
+#     userId
+#   }
+# }

@@ -1,0 +1,34 @@
+query Me {
+  me {
+    # id
+    # name
+    # username
+    # email
+    # file {
+    #   file
+    #   error
+    # }
+    # smallFile {
+    #   file
+    #   error
+    # }
+
+    __typename
+    id
+    username
+    name
+    email
+    bio
+    file {
+      file
+      error
+    }
+    smallFile {
+      file
+      error
+    }
+    followState
+    followingCount
+    followersCount
+  }
+}

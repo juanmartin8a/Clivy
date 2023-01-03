@@ -1,0 +1,13 @@
+mutation CommentPost($postId: Int!, $comment: String!, $userTagsInput: [UserTagInput!]!) {
+    commentPost(
+        postId: $postId,
+        comment: $comment,
+        userTagsInput: $userTagsInput
+    ) {
+        comment {
+            ...CommentFragment
+        }
+        postId
+        error
+    }
+}

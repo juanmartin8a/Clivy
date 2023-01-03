@@ -1,0 +1,15 @@
+mutation replyComment($commentId: Int!, $postId: Int!, $reply: String!, $userTagsInput: [UserTagInput!]!) {
+    replyComment(
+        commentId: $commentId,
+        postId: $postId,
+        reply: $reply,
+        userTagsInput: $userTagsInput
+    ) {
+        reply {
+            ...ReplyFragment
+        }
+		commentId
+        postId
+        error
+	}
+}

@@ -1,0 +1,9 @@
+mutation FollowUnfollowUser($followUserId: Int!, $clientId: String!) {
+  followUnfollowUser(
+    followUserId: $followUserId,
+    clientId: $clientId
+  ) {
+    value,
+    clientId
+  }
+}

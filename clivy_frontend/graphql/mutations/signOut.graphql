@@ -1,0 +1,3 @@
+mutation SignOut($token: String!) {
+	signOut(token: $token)
+}

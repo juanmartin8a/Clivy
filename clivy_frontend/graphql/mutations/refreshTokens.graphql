@@ -1,0 +1,5 @@
+mutation RefreshTokens($token: String!) {
+    refreshToken(token: $token) {
+        ...TokensFragment
+    }
+}

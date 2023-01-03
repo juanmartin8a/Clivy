@@ -1,0 +1,17 @@
+query AllVideogames {
+  allVideogames {
+    ...VideogameFragment
+    videogameGenre {
+      videogameGenre {
+        id
+        videogame_genre
+      }
+    }
+  }
+}
+
+query AllTapsVideogames {
+  allTapsVideogames {
+    ...VideogameFragment
+  }
+}

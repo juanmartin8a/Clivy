@@ -1,0 +1,224 @@
+query Notifications($limit: Int!, $idsList: [String!]!) {
+  notifications(
+    limit: $limit,
+    idsList: $idsList,
+  ) {
+    notifications {
+      type
+      parent_id
+      concatenated_id
+      updatedAt
+      createdAt
+      likeNotification {
+        post {
+          id
+          likeCount
+          fileImg {
+            file
+          }
+          likes {
+            user {
+              id
+              username,
+              smallFile {
+                file
+              }
+            }
+          }
+        }
+      }
+      likeReplyNotification {
+        reply {
+          id
+          reply
+          comment {
+            id
+            post {
+              id
+              fileImg {
+                file
+              }
+            }
+          }
+          userTags {
+            reply_id
+            user_id
+            user_string,
+          }
+          likeCount
+          likes {
+            user {
+              id
+              username,
+              smallFile {
+                file
+              }
+            }
+          }
+        }
+      }
+      likeCommentNotification {
+        comment {
+          id
+          comment
+          userTags {
+            comment_id
+            user_id
+            user_string,
+          }
+          post {
+            id
+            fileImg {
+              file
+            }
+          }
+          likeCount
+          likes {
+            user {
+              id
+              username,
+              smallFile {
+                file
+              }
+            }
+          }
+        }
+      }
+      followNotification {
+        follower {
+          id
+          username
+          followState
+          smallFile {
+            file
+            error
+          }
+        }
+      }
+      commentNotification {
+        comment {
+          id
+          comment
+          post {
+            id
+            fileImg {
+              file
+            }
+          }
+          userTags {
+            comment_id,
+            user_id
+            user_string
+          }
+          user {
+            id,
+            username,
+            smallFile {
+              file
+            }
+          }
+        }
+      }
+      replyNotification {
+        reply {
+          id
+          reply
+          comment {
+            id
+            post {
+              id
+              fileImg {
+                file
+              }
+            }
+          }
+          userTags {
+            reply_id,
+            user_id
+            user_string
+          }
+          user {
+            id,
+            username,
+            smallFile {
+              file
+            }
+          }
+        }
+      }
+      commentTagNotification {
+        comment {
+          id
+          comment
+          post {
+            id
+            fileImg {
+              file
+            }
+          }
+          userTags {
+            comment_id,
+            user_id
+            user_string
+          }
+          user {
+            id,
+            username,
+            smallFile {
+              file
+            }
+          }
+        }
+      }
+      replyTagNotification {
+        reply {
+          id
+          reply
+          comment {
+            id
+            post {
+              id
+              fileImg {
+                file
+              }
+            }
+          }
+          userTags {
+            reply_id,
+            user_id
+            user_string
+          }
+          user {
+            id,
+            username,
+            smallFile {
+              file
+            }
+          }
+        }
+      }
+      captionTagNotification {
+        post {
+          id
+          fileImg {
+            file
+          }
+          caption
+          userTags {
+            post_id,
+            user_id
+            user_string
+          }
+          user {
+            id,
+            username,
+            smallFile {
+              file
+            }
+          }
+        }
+      }
+    }
+    hasMore
+  }
+} 

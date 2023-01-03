@@ -1,0 +1,3 @@
+query VerifyResetCode($email: String!, $code: String!) {
+  verifyResetCode(email: $email, code: $code)
+}

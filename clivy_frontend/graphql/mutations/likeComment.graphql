@@ -1,0 +1,6 @@
+mutation LikeUnlikeComment($commentId: Int!, $clientId: String!) {
+	likeUnlikeComment(commentId: $commentId, clientId: $clientId) {
+    value
+		clientId
+	}
+}

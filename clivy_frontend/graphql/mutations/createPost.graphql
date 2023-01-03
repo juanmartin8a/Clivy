@@ -1,0 +1,29 @@
+mutation CreatePost(
+	$caption: String!
+	$file: Upload!, 
+	$fileDims: FileDimsInput!,
+	$fileGif: Upload!,
+	$fileImg: Upload!,
+	$userTagsInput: [UserTagInput!]!,
+	$videogameId: Int,
+	$videogameGenreIds: [Int!]!
+) {
+  createPost(
+		file: $file,
+		caption: $caption,
+		fileDims: $fileDims,
+		fileGif: $fileGif,
+		fileImg: $fileImg,
+		userTagsInput: $userTagsInput,
+		videogameId: $videogameId,
+		videogameGenreIds: $videogameGenreIds
+  ) {
+    post {
+      ...PostFragment
+		},
+		error {
+			field
+			message
+		}
+  }
+}

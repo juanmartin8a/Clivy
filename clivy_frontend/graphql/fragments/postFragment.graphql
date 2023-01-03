@@ -1,0 +1,29 @@
+fragment PostFragment on Post {
+  __typename
+  id
+  file {
+    file
+    error
+  }
+  user {
+    id
+    username
+    smallFile {
+      file
+      error
+    }
+  }
+  userTags {
+    post_id
+    user_id
+    user_string
+  }
+  likeState
+  likeCount
+  caption
+  createdAt
+  commentCount
+  viewsCount
+  fileWidth,
+  fileHeight
+}
