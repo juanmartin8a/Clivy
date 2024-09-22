@@ -28,6 +28,8 @@ Social media for gamers!
     - **For you**: Shows recommended videogame clips based on the user's interactions on the app with a tailored-made recommendations algorithm written in PostgreSQL.
   
     - **Following**: Shows the videogame clips of the users you follow.
+  
+  The clips coming from each feed can be filtered by videogame. This means that you can choose to view clips from a specific videogame in the "For you" or "Following" feeds.
 - ### Notifications
   You are notified when:
     - A user adds follows you
@@ -65,3 +67,20 @@ Social media for gamers!
   - Uploaded videogame clips  
 - ### User search
   A search engine for looking for people.
+
+## Pictures
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/aba6de07-dd4a-4e4d-b958-ea8389fa8d5f" alt="Screenshot 0" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+  <img src="https://github.com/user-attachments/assets/6337de9d-1487-4b44-8cb7-7fccdaa1066a" alt="Screenshot 1" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+  <img src="https://github.com/user-attachments/assets/e632fbdc-bf33-4cfb-b905-d932185e65a6" alt="Screenshot 2" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+  <img src="https://github.com/user-attachments/assets/e958fa3c-e48e-49b5-a9b7-50d406cb97b0" alt="Screenshot 3" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+  <img src="https://github.com/user-attachments/assets/4e73f232-6fcc-4491-a155-8fb2b9f50ec0" alt="Screenshot 4" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+  <img src="https://github.com/user-attachments/assets/5a58dc31-1825-4953-8450-225ae2955e35" alt="Screenshot 5" width="200" style="max-width: 100%; height: auto; display: inline-block; margin: 5px;" />
+</div>
+
+## Disclaimer
+There are a few things to note about this project:
+  - I only have pictures from when the app was in development.
+  - At first, I tested the app by uploading any video instead of videogame clips.
+  - Often, I would use hard-coded data instead of the uploaded data in order to quickly test how the text data would look with different amounts of characters
+  - The last picture is the closest to how the app looked like.
