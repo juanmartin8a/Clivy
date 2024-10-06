@@ -1,11 +1,14 @@
 # Clivy
+![Started](https://img.shields.io/badge/Started-Apr%202021-blue%20green.svg)
+![Last Updated](https://img.shields.io/badge/Last%20Updated-Aug%202022-blue.svg?color=informational)
+
 Social media for gamers!
 
   - ## Why
     I thought that it would be cool to have a dedicated social media exclusively for gamers since it is a huge community.
 
   - ## Status
-    No longer active as I got sick of working on it. Messy spaguetti code. Well, at least I learned to write readable more organized code :)
+    No longer active as I got sick of working on it. Extremely burned out. Messy spaguetti code. Well, at least I learned to write readable more organized code :)
 
 ## Platforms
 - iOS
